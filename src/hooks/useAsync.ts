@@ -3,13 +3,18 @@ import { Post, PostList } from '../models/post';
 
 type TUseAsync = (
   callback: () => Promise<number[]>,
-  refresh: number,
+  interval: number,
   dependencies?: [] | unknown[]
-) => { loading: boolean; error: boolean; value: number[] | [] };
+) => {
+  loading: boolean;
+  error: boolean;
+  value: number[] | [];
+  refreshHandler: () => void;
+};
 
 export const useAsync: TUseAsync = (
   callback,
-  refresh: number,
+  interval: number,
   dependencies = []
 ) => {
   const [loading, setLoading] = useState(true);
@@ -26,13 +31,16 @@ export const useAsync: TUseAsync = (
       .finally(() => setLoading(false));
   }, dependencies);
 
-  useEffect(() => {
+  const refreshHandler = () => {
     callbackMemoized();
-    const interval = setInterval(() => {
-      callbackMemoized();
-    }, refresh);
-    return () => clearInterval(interval);
+  };
+
+  useEffect(() => {
+    // const interval = setInterval(() => {
+    callbackMemoized();
+    // }, refresh);
+    // return () => clearInterval(interval);
   }, [callbackMemoized]);
 
-  return { loading, error, value };
+  return { loading, error, value, refreshHandler };
 };
