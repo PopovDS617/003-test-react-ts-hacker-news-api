@@ -1,22 +1,23 @@
-import { useState, useEffect } from 'react';
-import { ALL_POSTS, POSTS_BATCH } from '../constants/infinite-scroll-options';
-import { debounce } from '../utils/debounce';
+import React, { useState, useEffect } from 'react';
+import {
+  ALL_POSTS,
+  POSTS_BATCH,
+  INITIAL_BATCH
+} from '../constants/infinite-scroll-options';
 
 export const useInfiniteScroll = () => {
   const [loading, setLoading] = useState(false);
-  const [count, setCount] = useState(POSTS_BATCH);
+  const [count, setCount] = useState(INITIAL_BATCH);
 
-  const handleScroll = debounce(() => {
-    if (
-      window.innerHeight + document.documentElement.scrollTop !==
-        document.documentElement.offsetHeight ||
-      loading
-    ) {
-      return false;
+  const handleScroll = (e: Event) => {
+    const scrollHeight = (e.target as Document).documentElement.scrollHeight;
+    const currentHeight = Math.ceil(
+      (e.target as Document).documentElement.scrollTop + window.innerHeight
+    );
+    if (currentHeight + 1 >= scrollHeight) {
+      setLoading(true);
     }
-
-    setLoading(true);
-  }, 500);
+  };
 
   useEffect(() => {
     if (!loading) return;

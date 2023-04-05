@@ -20,7 +20,7 @@ export const SinglePost = memo((props: Props) => {
         {postData ? (
           <p className="text-xl sm:l font-bold py-2">{postData.title}</p>
         ) : (
-          <p className="text-md sm:l font-bold   bg-white text-white opacity-50 rounded-lg">
+          <p className="text-md sm:l font-bold my-2   bg-white text-white opacity-50 rounded-lg">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam
           </p>
         )}
@@ -36,14 +36,20 @@ export const SinglePost = memo((props: Props) => {
           </ul>
         ) : (
           <ul>
-            <li className="    my-1   bg-white text-white opacity-30 rounded-lg">
-              Lorem ipsum dolor sit
+            <li>
+              <span className="    my-1   bg-white text-white opacity-30 rounded-lg">
+                Lorem ipsum dolor sit
+              </span>
             </li>
-            <li className="  my-1   bg-white text-white opacity-30 rounded-lg">
-              Lorem ipsum dolor sit amet
+            <li>
+              <span className="    my-1   bg-white text-white opacity-30 rounded-lg">
+                Lorem ipsum dolor sit amet
+              </span>
             </li>
-            <li className="   my-1   bg-white text-white opacity-30 rounded-lg">
-              Lorem ipsum dolor sit
+            <li>
+              <span className="    my-1   bg-white text-white opacity-30 rounded-lg">
+                Lorem ipsum dolor sit amet
+              </span>
             </li>
           </ul>
         )}
