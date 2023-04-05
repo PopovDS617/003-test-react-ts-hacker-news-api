@@ -1,5 +1,14 @@
-function App() {
-  return <div className="text text-lg text-red-400">hello</div>;
-}
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { PostListPage } from './pages/PostListPage';
+import { SinglePostPage } from './pages/SinglePostPage';
 
-export default App;
+export const App = () => {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<PostListPage />} />
+        <Route path="/:postId" element={<SinglePostPage />} />
+      </Routes>
+    </BrowserRouter>
+  );
+};
