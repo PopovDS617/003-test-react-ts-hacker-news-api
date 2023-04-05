@@ -1,3 +1,3 @@
 export const ALL_POSTS = 100;
-export const INITIAL_BATCH = 15;
-export const POSTS_BATCH = 10;
+export const INITIAL_POSTS = 15;
+export const TO_BE_LOADED = 10;
