@@ -8,7 +8,7 @@ type Props = {
 };
 
 export const SingleComment = (props: Props) => {
-  const [commentData, setCommentData] = useState<TComment | null>();
+  const [commentData, setCommentData] = useState<TComment | null>(null);
   const [isNestedShown, setIsNestedShown] = useState(false);
 
   useEffect(() => {

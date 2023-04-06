@@ -16,7 +16,7 @@ export const useAsync: TUseAsync = (
   interval: number,
   dependencies = []
 ) => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [value, setValue] = useState<number[] | []>([]);
 

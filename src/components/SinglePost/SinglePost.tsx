@@ -9,7 +9,7 @@ type Props = {
 };
 
 export const SinglePost = memo((props: Props) => {
-  const [postData, setPostData] = useState<TPost | null>();
+  const [postData, setPostData] = useState<TPost | null>(null);
 
   useEffect(() => {
     getData(props.postId).then(data => setPostData(data));
