@@ -43,7 +43,7 @@ export const useAsync: TUseAsync = (
       callbackMemoized();
     }, interval);
     return () => clearInterval(timer);
-  }, []);
+  }, [callbackMemoized]);
 
   return { loading, error, value, refreshHandler };
 };
