@@ -5,15 +5,10 @@ import { SinglePost } from '../SinglePost/SinglePost';
 import { RefreshIcon } from '../Icons/RefreshIcon';
 import { BounceLoader } from 'react-spinners';
 import { useInfiniteScroll } from '../../hooks/useInfiniteScroll';
+import { Link } from 'react-router-dom';
 
 export const PostList = () => {
-  const { loading, error, value, refreshHandler } = useAsync(getIDs, 3600, []);
-
-  const [storyIds, setStoryIds] = useState([]);
-
-  useEffect(() => {
-    getIDs().then(data => setStoryIds(data));
-  }, []);
+  const { loading, error, value, refreshHandler } = useAsync(getIDs, 60000, []);
 
   const { count } = useInfiniteScroll();
 
@@ -35,13 +30,13 @@ export const PostList = () => {
       )}
 
       <ul>
-        {storyIds.slice(0, count).map(item => {
+        {value.slice(0, count).map(id => {
           return (
             <li
-              key={item}
+              key={id}
               className="md:h-40 sm:h-20 bg-slate-700   hover:shadow-2xl hover:shadow-black  p-5 my-3 hover:bg-green-600 hover:text-black text-white hover:-translate-y-2 hover:translate-x-2 transition duration-200 rounded-lg"
             >
-              <SinglePost postId={item} />
+              <SinglePost postId={id} />
             </li>
           );
         })}

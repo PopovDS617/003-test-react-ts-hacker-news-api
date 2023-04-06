@@ -1,4 +1,4 @@
-export type Post = {
+export type TPost = {
   by: string;
   descendants: number;
   id: number;
@@ -10,4 +10,4 @@ export type Post = {
   url: string;
 };
 
-export type PostList = Post[];
+export type TPostList = TPost[];

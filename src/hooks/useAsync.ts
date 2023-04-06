@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useState } from 'react';
-import { Post, PostList } from '../models/post';
 
 type TUseAsync = (
   callback: () => Promise<number[]>,
@@ -36,11 +35,15 @@ export const useAsync: TUseAsync = (
   };
 
   useEffect(() => {
-    // const interval = setInterval(() => {
     callbackMemoized();
-    // }, refresh);
-    // return () => clearInterval(interval);
   }, [callbackMemoized]);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      callbackMemoized();
+    }, interval);
+    return () => clearInterval(timer);
+  }, []);
 
   return { loading, error, value, refreshHandler };
 };

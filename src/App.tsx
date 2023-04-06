@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { PostListPage } from './pages/PostListPage';
-import { SinglePostPage } from './pages/SinglePostPage';
+import { PostDetailsPage } from './pages/PostDetailsPage';
 import Header from './components/Layout/Header';
 
 export const App = () => {
@@ -10,7 +10,7 @@ export const App = () => {
         <Header />
         <Routes>
           <Route path="/" element={<PostListPage />} />
-          <Route path="/:postId" element={<SinglePostPage />} />
+          <Route path="/post/:postId" element={<PostDetailsPage />} />
         </Routes>
       </div>
     </BrowserRouter>
