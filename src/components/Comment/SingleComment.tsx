@@ -20,7 +20,7 @@ export const SingleComment = (props: Props) => {
   };
 
   return (
-    <div className="pl-6">
+    <div className="pl-6 border-l-2 border-solid border-black my-4 overflow-x-auto  ">
       {commentData ? (
         <div className="bg-slate-300 p-4 rounded-lg">
           <span className="text-2xl font-bold p-1 rounded-md bg-slate-500">
